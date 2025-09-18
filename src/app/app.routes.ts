@@ -9,10 +9,15 @@ import { DreamsToInterpretComponent } from './pages/interpreter/dreams-to-interp
 import { GetAdminsInterpretationsComponent } from './pages/interpreter/get-admins-interpretations/get-admins-interpretations';
 import { DreamdetialsComponent } from './pages/user/dreamdetials/dreamdetials';
 import { HomeComponent } from './pages/home/home';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard';
+
 
 export const routes: Routes = [
    { path: '', component: HomeComponent },     // default route
    
+   { path: 'admin', component: AdminDashboardComponent },
+
+
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   

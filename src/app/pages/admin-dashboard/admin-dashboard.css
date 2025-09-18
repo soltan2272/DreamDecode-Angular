@@ -1,0 +1,7 @@
+:host {
+  display: block;
+  padding-bottom: 60px;
+}
+
+.card-header { background: #fff; border-bottom: 0; }
+.list-group-item { cursor: default; }

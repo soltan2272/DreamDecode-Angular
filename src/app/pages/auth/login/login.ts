@@ -21,8 +21,14 @@ export class LoginComponent {
  onSubmit() {
   this.authService.login({ email: this.email, password: this.password }).subscribe({
     next: (res) => {
-      if (res.succeeded) {
-        this.router.navigate(['/']); 
+      if (res.succeeded && res.role) {
+        if(res.role==="Admin"){
+          this.router.navigate(['/admin']);
+        }
+        else{
+ this.router.navigate(['/home']); 
+        }
+       
       } else {
         this.errorMessage = res.errors?.join(', ') || 'Login failed';
       }
