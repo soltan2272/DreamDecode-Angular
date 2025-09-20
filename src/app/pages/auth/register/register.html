@@ -1,31 +1,43 @@
 <div class="auth-container">
-  <h2>Register</h2>
+  <h2 class="auth-title">إنشاء حساب</h2>
   <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
-    <input 
-      type="text" 
-      name="fullName" 
-      [(ngModel)]="fullName" 
-      placeholder="Full Name" 
-      required />
+    <div class="form-group">
+      <label>الاسم الكامل</label>
+      <input
+        class="form-control"
+        type="text"
+        name="fullName"
+        [(ngModel)]="fullName"
+        placeholder="اكتب اسمك"
+        required />
+    </div>
 
-    <input 
-      type="email" 
-      name="email" 
-      [(ngModel)]="email" 
-      placeholder="Email" 
-      required />
+    <div class="form-group">
+      <label>البريد الإلكتروني</label>
+      <input
+        class="form-control"
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        placeholder="example@mail.com"
+        required />
+    </div>
 
-    <input 
-      type="password" 
-      name="password" 
-      [(ngModel)]="password" 
-      placeholder="Password" 
-      required />
+    <div class="form-group">
+      <label>كلمة المرور</label>
+      <input
+        class="form-control"
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        placeholder="••••••••"
+        required />
+    </div>
 
-    <button type="submit" [disabled]="!registerForm.form.valid">Register</button>
+    <button class="btn btn-primary w-100" type="submit" [disabled]="!registerForm.form.valid">تسجيل</button>
   </form>
 
   @if (errorMessage) {
-  <p class="error">{{ errorMessage }}</p>
-}
+    <p class="error">{{ errorMessage }}</p>
+  }
 </div>

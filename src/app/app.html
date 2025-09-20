@@ -1,1 +1,62 @@
-<router-outlet></router-outlet>
+<header class="header">
+  <nav class="nav container">
+    <a routerLink="/" class="logo">تفسير الأحلام</a>
+    <ul class="nav-menu">
+      <li><a routerLink="/" class="nav-link">الرئيسية</a></li>
+      <li><a (click)="openModal('login')" class="nav-link" href="#loginModal">تسجيل دخول</a></li>
+      <li><a (click)="openModal('register')" class="nav-link" href="#registerModal">إنشاء حساب</a></li>
+      <li><a routerLink="/admin" class="nav-link">لوحة التحكم</a></li>
+    </ul>
+  </nav>
+  </header>
+
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal" [class.active]="modal==='login'" [style.display]="modal==='login' ? 'flex' : 'none'" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="close-modal" (click)="closeModal()">&times;</button>
+    <app-login></app-login>
+  </div>
+  </div>
+
+<!-- Register Modal -->
+<div id="registerModal" class="modal" [class.active]="modal==='register'" [style.display]="modal==='register' ? 'flex' : 'none'" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="close-modal" (click)="closeModal()">&times;</button>
+    <app-register></app-register>
+  </div>
+  </div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>تواصل معنا</h3>
+        <p>📧 info@dreaminterpretation.com</p>
+        <p>📞 +966 123 456 789</p>
+        <p>📍  مصر  </p>
+      </div>
+      <div class="footer-section">
+        <h3>روابط مهمة</h3>
+        <p><a href="#">سياسة الخصوصية</a></p>
+        <p><a href="#">شروط الاستخدام</a></p>
+        <p><a href="#">الأسئلة الشائعة</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>تابعنا</h3>
+        <div class="social-links">
+          <a href="#" title="Facebook">📘</a>
+          <a href="#" title="Twitter">🐦</a>
+          <a href="#" title="Instagram">📸</a>
+          <a href="#" title="LinkedIn">💼</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #e0e0e0; padding-top: 1rem; color: #666;">
+      © 2025 تفسير الأحلام - جميع الحقوق محفوظة
+    </div>
+  </div>
+</footer>
