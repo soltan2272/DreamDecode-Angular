@@ -26,15 +26,22 @@ export class LoginComponent {
           this.router.navigate(['/admin']);
         }
         else{
- this.router.navigate(['/home']); 
+ this.router.navigate(['/add-dream']); 
         }
        
       } else {
         this.errorMessage = res.errors?.join(', ') || 'Login failed';
       }
     },
-    error: () => {
-      this.errorMessage = 'Something went wrong. Try again.';
+    error: (err) => {
+       const errors = err.error?.errors;
+
+  if (errors) {
+    // Case 1: errors = { Password: ["msg"], Email: ["msg2"] }
+    this.errorMessage = Object.values(errors).flat().join(', ');
+  } else {
+    this.errorMessage = 'Something went wrong.';
+  }
     }
   });
 }

@@ -34,8 +34,16 @@ export class RegisterComponent {
           this.errorMessage = res.errors?.join(', ') || 'Registration failed';
         }
       },
-      error: () => {
-        this.errorMessage = 'Something went wrong. Try again.';
+      error: (err) => {
+        console.log(err);
+         const errors = err.error?.errors;
+
+  if (errors) {
+    // Case 1: errors = { Password: ["msg"], Email: ["msg2"] }
+    this.errorMessage = Object.values(errors).flat().join(', ');
+  } else {
+    this.errorMessage = 'Something went wrong.';
+  }
       }
     });
   }

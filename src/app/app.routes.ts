@@ -14,7 +14,8 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 
 export const routes: Routes = [
    { path: '', component: HomeComponent },     // default route
-   
+      { path: 'home', component: HomeComponent },   
+
    { path: 'admin', component: AdminDashboardComponent },
 
 
