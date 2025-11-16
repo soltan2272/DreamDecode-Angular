@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
   templateUrl: './user-dashboard.html',
   styleUrls: ['./user-dashboard.css'],
-  imports: [RouterOutlet]
+  imports: [RouterOutlet, RouterLink]
 })
 export class UserDashboardComponent {
 
