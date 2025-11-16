@@ -1,0 +1,21 @@
+<nav class="dashboard-nav">
+  <div class="container nav-container">
+    <h1 class="logo">لوحة المستخدم</h1>
+
+    <div class="nav-links">
+      <a routerLink="/add-dream" class="nav-item">إضافة حلم</a>
+      <a routerLink="/my-dreams" class="nav-item">أحلامي</a>
+      <button (click)="logout()" class="btn-logout">تسجيل خروج</button>
+    </div>
+  </div>
+</nav>
+
+
+<section class="dashboard-content">
+  <router-outlet></router-outlet>
+  <h2>مرحباً بك 👋</h2>
+  <p>اختر من القائمة بالأعلى لبدء الاستخدام.</p>
+</section>
+
+
+

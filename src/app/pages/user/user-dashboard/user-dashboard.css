@@ -1,0 +1,47 @@
+.dashboard-nav {
+  background: #fff;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #4a2dcc;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #444;
+  font-size: 16px;
+}
+
+.nav-item:hover {
+  color: #4a2dcc;
+}
+
+.btn-logout {
+  background: #ff4b4b;
+  border: none;
+  padding: 7px 14px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dashboard-content {
+  padding: 40px;
+  text-align: center;
+}

@@ -7,9 +7,9 @@ import { MyDreamsComponent } from './pages/user/get-user-dreams/get-user-dreams'
 import { AddInterpretationComponent } from './pages/interpreter/add-interpretation/add-interpretation';
 import { DreamsToInterpretComponent } from './pages/interpreter/dreams-to-interpret/dreams-to-interpret';
 import { GetAdminsInterpretationsComponent } from './pages/interpreter/get-admins-interpretations/get-admins-interpretations';
-import { DreamdetialsComponent } from './pages/user/dreamdetials/dreamdetials';
 import { HomeComponent } from './pages/home/home';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard';
+import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard';
 
 
 export const routes: Routes = [
@@ -18,13 +18,13 @@ export const routes: Routes = [
 
    { path: 'admin', component: AdminDashboardComponent },
 
+{ path: 'userdashboard', component: UserDashboardComponent},
+      { path: 'add-dream', component: AddDreamComponent },
+      { path: 'my-dreams', component: MyDreamsComponent },
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   
-  { path: 'add-dream', component: AddDreamComponent },
-  { path: 'my-dreams', component: MyDreamsComponent },
-  { path: 'dream-detials', component: DreamdetialsComponent },
 
   {path:'add-interpretation',component:AddInterpretationComponent},
   {path:'dreams-to-interpret',component:DreamsToInterpretComponent},

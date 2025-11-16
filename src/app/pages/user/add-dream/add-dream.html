@@ -1,1 +1,28 @@
-<p>add-dream works!</p>
+<div class="container" dir="rtl">
+  <h2>إضافة حلم جديد</h2>
+
+  <form (ngSubmit)="submit()">
+    <div class="form-group">
+      <label>عنوان الحلم</label>
+      <input type="text" [(ngModel)]="title" name="title" required placeholder="اكتب عنوان الحلم">
+    </div>
+
+    <div class="form-group">
+      <label>وصف الحلم</label>
+      <textarea [(ngModel)]="description" name="description" required
+                placeholder="اكتب وصف الحلم بالتفصيل"></textarea>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input type="checkbox" [(ngModel)]="isPaid" name="isPaid">
+      <label>حلم مدفوع (تفسير خاص وسريع)</label>
+    </div>
+
+    <button type="submit" [disabled]="loading">
+      {{ loading ? 'جاري الإرسال...' : 'إرسال الحلم' }}
+    </button>
+  </form>
+
+  <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+</div>

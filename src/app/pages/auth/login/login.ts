@@ -26,7 +26,7 @@ export class LoginComponent {
           this.router.navigate(['/admin']);
         }
         else{
- this.router.navigate(['/add-dream']); 
+  this.router.navigate(['/userdashboard']); 
         }
        
       } else {

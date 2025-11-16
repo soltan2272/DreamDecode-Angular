@@ -1,1 +1,34 @@
-<p>get-user-dreams works!</p>
+<div class="container" dir="rtl">
+  <h2>أحلامي</h2>
+
+  <div *ngIf="loading" class="loading">جاري التحميل...</div>
+
+  <div *ngIf="!loading && dreams.length === 0" class="empty">
+    لا توجد أحلام بعد.
+  </div>
+
+  <div class="dream-card" *ngFor="let dream of dreams">
+    <h3>{{ dream.title }}</h3>
+    <p>{{ dream.description }}</p>
+
+    <div class="meta">
+      <span>تم الإرسال: {{ dream.submittedAt | date:'medium' }}</span>
+
+      <span>
+        الحالة:
+        <strong [class.done]="dream.isInterpreted">
+          {{ dream.isInterpreted ? 'تم التفسير' : 'قيد الانتظار' }}
+        </strong>
+      </span>
+
+      <span>
+        نوع الحلم: {{ dream.isPaid ? 'مدفوع' : 'مجاني' }}
+      </span>
+    </div>
+
+    <div *ngIf="dream.interpretationText" class="interpretation">
+      <h4>تفسير الحلم</h4>
+      <p>{{ dream.interpretationText }}</p>
+    </div>
+  </div>
+</div>
