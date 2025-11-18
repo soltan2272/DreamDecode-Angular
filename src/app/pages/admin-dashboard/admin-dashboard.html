@@ -44,12 +44,8 @@
               </div>
             </div>
          <div class="mt-2 text-muted">
-  {{ d.description | slice:0:200 }}
-  {{ d.description!.length > 200 ? '...' : '' }}
+  {{ d.description | slice:0:200 }} {{ (d.description || '').length > 200 ? '...' : '' }}
 </div>
-
-
-
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 
 export interface AddDreamDto {
   title: string;
-  description: string;
+  description?: string | null;
   isPaid: boolean;
 }
 

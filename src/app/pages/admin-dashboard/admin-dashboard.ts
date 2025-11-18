@@ -14,6 +14,7 @@ import { AdminService, DreamDto, InterpretationDto, RegisterDto } from '../../se
 export class AdminDashboardComponent implements OnInit {
   admins: any[] = [];
   pendingDreams: DreamDto[] = [];
+  
   myInterpretations: InterpretationDto[] = [];
 
   // Add-admin form model
@@ -43,12 +44,18 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
+
   loadPendingDreams() {
-    this.adminService.getPendingDreams().subscribe({
-      next: (res:any) => this.pendingDreams = res,
-      error: (err:any) => console.error('getPendingDreams', err)
-    });
-  }
+  this.adminService.getPendingDreams().subscribe({
+    next: (res: any) => {
+      this.pendingDreams = (res || []).map((d: DreamDto) => ({
+        ...d,
+        description: d.description || 'لا يوجد وصف'  
+      }));
+    },
+    error: (err: any) => console.error('getPendingDreams', err)
+  });
+}
 
   loadMyInterpretations() {
     this.adminService.getMyInterpretations().subscribe({
@@ -107,6 +114,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   submitInterpretation(form: HTMLFormElement) {
+    console.log("Interpret");
     if (!this.selectedDreamId) return;
     if (!this.interpText.trim()) {
       this.interpError = 'Please enter interpretation text.';
@@ -115,6 +123,7 @@ export class AdminDashboardComponent implements OnInit {
     this.adminService.addInterpretation({ dreamId: this.selectedDreamId, interpretationText: this.interpText }).subscribe({
       next: (res:any) => {
         // refresh lists
+        console.log(res);
         this.loadPendingDreams();
         this.loadMyInterpretations();
         // close modal
