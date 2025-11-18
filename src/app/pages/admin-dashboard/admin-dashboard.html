@@ -36,7 +36,7 @@
           <div *ngFor="let d of pendingDreams" class="mb-3 border rounded p-3">
             <div class="d-flex justify-content-between">
               <div>
-                <div class="fw-bold">{{ d.title }}</div>
+                <div class="fw-bold">{{ d.dreamTitle }}</div>
                 <small class="text-muted">from: {{ d.userId }} • {{ d.submittedAt | date:'short' }}</small>
               </div>
               <div>
@@ -44,7 +44,7 @@
               </div>
             </div>
          <div class="mt-2 text-muted">
-  {{ d.description | slice:0:200 }} {{ (d.description || '').length > 200 ? '...' : '' }}
+  {{ d.dreamDescription| slice:0:200 }} {{ (d.dreamDescription).length > 200 ? '...' : '' }}
 </div>
         </div>
       </div>
