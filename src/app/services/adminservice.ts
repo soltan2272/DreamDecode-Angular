@@ -20,8 +20,8 @@ export interface AuthResult {
 export interface DreamDto {
   dreamId: number;
   userId: string;
-  title: string;
-  description: string;
+  dreamTitle: string;
+  dreamDescription: string;
   submittedAt: string;
   isInterpreted: boolean;
   isPaid: boolean;
@@ -46,8 +46,8 @@ export class AdminService {
   constructor(private http: HttpClient) {}
 
   // Admin management
-  getAdmins(): Observable<any> { 
-    return this.http.get(`${this.base}/Admin/all`); 
+  getAdmins(): Observable<any> {
+    return this.http.get(`${this.base}/Admin/all`);
   }
 
   addAdmin(dto: RegisterDto): Observable<AuthResult> {
