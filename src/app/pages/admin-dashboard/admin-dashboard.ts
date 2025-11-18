@@ -25,7 +25,7 @@ export class AdminDashboardComponent implements OnInit {
   // Interpretation form model
   interpText = '';
   interpError = '';
-  selectedDreamId: number | null = null;
+  selectedDream: any = null;
 
   loading = false;
 
@@ -101,7 +101,7 @@ export class AdminDashboardComponent implements OnInit {
 
   openInterpretModal(dreamId: any) {
     console.log(dreamId);
-    this.selectedDreamId = dreamId;
+    this.selectedDream = dreamId;
     this.interpText = '';
     this.interpError = '';
     // open the bootstrap modal by id using JS
@@ -118,13 +118,13 @@ export class AdminDashboardComponent implements OnInit {
     console.log("Interpret ");
     // if (!this.selectedDreamId) return;
 
-     console.log("dreamid "+this.selectedDreamId);
+     console.log("dreamid "+this.selectedDream);
     if (!this.interpText.trim()) {
       this.interpError = 'Please enter interpretation text.';
       return;
     }
     console.log("hgghgh");
-    this.adminService.addInterpretation({ dreamId: this.selectedDreamId??0, interpretationText: this.interpText }).subscribe({
+    this.adminService.addInterpretation({ dreamId: this.selectedDream??0, interpretationText: this.interpText }).subscribe({
       next: (res:any) => {
         // refresh lists
         console.log(res);
@@ -137,8 +137,12 @@ export class AdminDashboardComponent implements OnInit {
           const bs = bootstrap.Modal.getInstance(el);
           if (bs) bs.hide();
         }
+
+        this.selectedDream = null;   
+        this.interpText = '';
+
       },
-      error: (err:any) => this.interpError = 'Failed to add interpretation'
+     // error: (err:any) => this.interpError = 'Failed to add interpretation'
     });
   }
 }
