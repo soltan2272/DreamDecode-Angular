@@ -41,8 +41,22 @@ h2 {
 
 .interpretation {
   margin-top: 15px;
-  padding-top: 10px;
-  border-top: 1px solid #eee;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9fa;
+  border: 1px solid #eef0f5;
+  border-right: 4px solid #667eea;
+}
+
+.interpretation h4 {
+  margin: 0 0 8px 0;
+  color: #667eea;
+  font-size: 1.1rem;
+}
+
+.interpretation p {
+  color: #333;
+  line-height: 1.6;
 }
 
 .loading,

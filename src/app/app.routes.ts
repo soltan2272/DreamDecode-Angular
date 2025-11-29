@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/auth/login/login';
 import { RegisterComponent } from './pages/auth/register/register';
 import { AddDreamComponent } from './pages/user/add-dream/add-dream';
@@ -10,32 +9,23 @@ import { GetAdminsInterpretationsComponent } from './pages/interpreter/get-admin
 import { HomeComponent } from './pages/home/home';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard';
+import { authGuard, adminGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
-   { path: '', component: HomeComponent },     // default route
-      { path: 'home', component: HomeComponent },   
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
 
-   { path: 'admin', component: AdminDashboardComponent },
+  { path: 'admin', component: AdminDashboardComponent, canActivate: [authGuard, adminGuard] },
 
-{ path: 'userdashboard', component: UserDashboardComponent},
-      { path: 'add-dream', component: AddDreamComponent },
-      { path: 'my-dreams', component: MyDreamsComponent },
+  { path: 'userdashboard', component: UserDashboardComponent, canActivate: [authGuard] },
+  { path: 'add-dream', component: AddDreamComponent, canActivate: [authGuard] },
+  { path: 'my-dreams', component: MyDreamsComponent, canActivate: [authGuard] },
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  
 
-  {path:'add-interpretation',component:AddInterpretationComponent},
-  {path:'dreams-to-interpret',component:DreamsToInterpretComponent},
-  {path:'get-admin-interpretations',component:GetAdminsInterpretationsComponent},
-
- 
-
+  { path: 'add-interpretation', component: AddInterpretationComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'dreams-to-interpret', component: DreamsToInterpretComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'get-admin-interpretations', component: GetAdminsInterpretationsComponent, canActivate: [authGuard, adminGuard] },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

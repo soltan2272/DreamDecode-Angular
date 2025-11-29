@@ -123,7 +123,6 @@ export class AdminDashboardComponent implements OnInit {
       this.interpError = 'Please enter interpretation text.';
       return;
     }
-    console.log("hgghgh");
     this.adminService.addInterpretation({ dreamId: this.selectedDream??0, interpretationText: this.interpText }).subscribe({
       next: (res:any) => {
         // refresh lists

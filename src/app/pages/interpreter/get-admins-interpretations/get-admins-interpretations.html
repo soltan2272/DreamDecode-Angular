@@ -1,1 +1,33 @@
-<p>get-admins-interpretations works!</p>
+<div class="container" dir="rtl">
+  <h2>تفسيراتى</h2>
+
+  @if (loading) {
+    <p>جاري التحميل...</p>
+  } @else if (error) {
+    <p class="error">{{ error }}</p>
+  } @else if (!interpretations.length) {
+    <p>لا توجد تفسيرات بعد.</p>
+  } @else {
+    <div class="interpretations-list">
+      @for (it of interpretations; track it.interpretationId) {
+        <div class="interp-card">
+          <div class="interp-header">
+            <h3>{{ it.dream?.dreamTitle || ('حلم #' + it.dreamId) }}</h3>
+            <span class="date">{{ it.interpretedAt | date:'medium' }}</span>
+          </div>
+          <p class="text">{{ it.interpretationText }}</p>
+          @if (it.dream) {
+            <details>
+              <summary>تفاصيل الحلم</summary>
+              <div class="dream-details">
+                <p><strong>الوصف:</strong> {{ it.dream.dreamDescription }}</p>
+                <p><strong>أُرسل في:</strong> {{ it.dream.submittedAt | date:'medium' }}</p>
+                <p><strong>النوع:</strong> {{ it.dream.isPaid ? 'مدفوع' : 'مجاني' }}</p>
+              </div>
+            </details>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

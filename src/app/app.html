@@ -1,11 +1,26 @@
+<app-spinner></app-spinner>
+
 <header class="header">
   <nav class="nav container">
     <a routerLink="/" class="logo">تفسير الأحلام</a>
     <ul class="nav-menu">
       <li><a routerLink="/" class="nav-link">الرئيسية</a></li>
-      <li><a (click)="openModal('login')" class="nav-link" href="#loginModal">تسجيل دخول</a></li>
-      <li><a (click)="openModal('register')" class="nav-link" href="#registerModal">إنشاء حساب</a></li>
-      <!-- <li><a routerLink="/admin" class="nav-link">لوحة التحكم</a></li> -->
+
+      @if (!isLoggedIn) {
+        <li><a (click)="openModal('login')" class="nav-link" href="#loginModal">تسجيل دخول</a></li>
+        <li><a (click)="openModal('register')" class="nav-link" href="#registerModal">إنشاء حساب</a></li>
+      } @else {
+        @if (role === 'Admin') {
+          <li><a routerLink="/admin" class="nav-link">لوحة التحكم</a></li>
+          <li><a routerLink="/dreams-to-interpret" class="nav-link">أحلام قيد التفسير</a></li>
+          <li><a routerLink="/get-admin-interpretations" class="nav-link">تفسيراتى</a></li>
+        } @else {
+          <li><a routerLink="/userdashboard" class="nav-link">لوحة المستخدم</a></li>
+          <li><a routerLink="/add-dream" class="nav-link">إضافة حلم</a></li>
+          <li><a routerLink="/my-dreams" class="nav-link">أحلامي</a></li>
+        }
+        <li><button class="nav-link" style="background:none;border:0;cursor:pointer" (click)="logout()">تسجيل خروج</button></li>
+      }
     </ul>
   </nav>
   </header>

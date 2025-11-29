@@ -28,8 +28,12 @@ export class RegisterComponent {
 
     this.authService.register(dto).subscribe({
       next: (res) => {
-        if (res.succeeded) {
-          this.router.navigate(['/']); 
+        if (res.succeeded && res.role) {
+          if (res.role === 'Admin') {
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate(['/userdashboard']);
+          }
         } else {
           this.errorMessage = res.errors?.join(', ') || 'Registration failed';
         }

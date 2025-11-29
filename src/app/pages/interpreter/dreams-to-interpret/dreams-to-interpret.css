@@ -1,0 +1,95 @@
+@@
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+h2 {
+  color: #fff;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.dreams-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.dream-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border: 1px solid #f0f0f0;
+}
+
+.dream-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.badge {
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  background: #eee;
+  color: #555;
+}
+
+.badge.paid {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.desc {
+  color: #555;
+  line-height: 1.8;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.meta {
+  display: flex;
+  gap: 1rem;
+  color: #777;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.actions {
+  margin-bottom: 0.5rem;
+}
+
+.interp-form {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #eee;
+}
+
+.interp-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.error {
+  color: #dc3545;
+  margin-top: 0.4rem;
+}
+
+.success {
+  color: #128f4a;
+  margin-top: 0.4rem;
+}
+
+@media (min-width: 768px) {
+  .dreams-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

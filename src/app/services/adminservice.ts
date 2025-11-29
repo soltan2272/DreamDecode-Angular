@@ -65,7 +65,7 @@ export class AdminService {
   }
 
   addInterpretation(payload: { dreamId: number; interpretationText: string }) {
-    return this.http.post<InterpretationDto>(`${this.base}/Interpretation/add`, payload);
+    return this.http.post(`${this.base}/Interpretation/add`, payload, { responseType: 'text' });
   }
 
   getMyInterpretations(): Observable<InterpretationDto[]> {

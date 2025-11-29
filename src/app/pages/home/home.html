@@ -3,8 +3,16 @@
     <h1>اكتشف معنى أحلامك</h1>
     <p>خدمة تفسير الأحلام الاحترافية مع خبراء متخصصين</p>
     <div class="hero-buttons">
-      <a routerLink="/register" class="btn btn-primary">ابدأ الآن</a>
-<a routerLink="/login" class="btn btn-outline">تسجيل دخول</a>
+      @if (!isLoggedIn) {
+        <a routerLink="/register" class="btn btn-primary">ابدأ الآن</a>
+        <a routerLink="/login" class="btn btn-outline">تسجيل دخول</a>
+      } @else {
+        @if (role === 'Admin') {
+          <a routerLink="/admin" class="btn btn-primary">اذهب للوحة التحكم</a>
+        } @else {
+          <a routerLink="/userdashboard" class="btn btn-primary">اذهب للوحة المستخدم</a>
+        }
+      }
 
     </div>
   </div>

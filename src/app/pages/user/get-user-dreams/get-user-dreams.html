@@ -26,9 +26,12 @@
       </span>
     </div>
 
-    <div *ngIf="dream.interpretationText" class="interpretation">
-      <h4>تفسير الحلم</h4>
-      <p>{{ dream.interpretationText }}</p>
+    <div *ngIf="dream.interpretationText || dream.interpretation" class="interpretation">
+      <h4>تفسير المفسر</h4>
+      <p>{{ dream.interpretationText || dream.interpretation?.interpretationText }}</p>
+      <div class="interp-meta" *ngIf="dream.interpretedAt || dream.interpretation?.interpretedAt">
+        <small>تاريخ التفسير: {{ (dream.interpretedAt || dream.interpretation?.interpretedAt) | date:'medium' }}</small>
+      </div>
     </div>
   </div>
 </div>

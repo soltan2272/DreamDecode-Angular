@@ -1,1 +1,54 @@
-<p>dreams-to-interpret works!</p>
+<div class="container" dir="rtl">
+  <h2>أحلام قيد التفسير</h2>
+
+  @if (loading) {
+    <p>جاري التحميل...</p>
+  } @else if (error) {
+    <p class="error">{{ error }}</p>
+  } @else if (!dreams.length) {
+    <p>لا توجد أحلام معلقة حالياً.</p>
+  } @else {
+    <div class="dreams-list">
+      @for (d of dreams; track d.dreamId) {
+        <div class="dream-card">
+          <div class="dream-header">
+            <h3>{{ d.dreamTitle }}</h3>
+            <span class="badge" [class.paid]="d.isPaid">{{ d.isPaid ? 'مدفوع' : 'مجاني' }}</span>
+          </div>
+          <p class="desc">{{ d.dreamDescription }}</p>
+          <div class="meta">
+            <span>تاريخ الإرسال: {{ d.submittedAt | date:'medium' }}</span>
+            <span>معرف المستخدم: {{ d.userId }}</span>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary btn-small" (click)="toggleForm(d.dreamId)">إضافة تفسير</button>
+          </div>
+
+          @if (openForm[d.dreamId]) {
+            <div class="interp-form">
+              <label>نص التفسير</label>
+              <textarea class="form-control" rows="4"
+                        [(ngModel)]="interpretationText[d.dreamId]"
+                        placeholder="اكتب تفسيرك للحلم هنا..."></textarea>
+              @if (submitError[d.dreamId]) {
+                <p class="error">{{ submitError[d.dreamId] }}</p>
+              }
+              @if (submitSuccess[d.dreamId]) {
+                <p class="success">{{ submitSuccess[d.dreamId] }}</p>
+              }
+              <div class="interp-actions">
+                <button class="btn btn-primary btn-small"
+                        [disabled]="submitLoading[d.dreamId]"
+                        (click)="submitInterpretation(d)">
+                  {{ submitLoading[d.dreamId] ? 'جارٍ الحفظ...' : 'حفظ التفسير' }}
+                </button>
+                <button class="btn btn-outline btn-small" (click)="toggleForm(d.dreamId)">إلغاء</button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>
